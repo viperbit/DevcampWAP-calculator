@@ -15,7 +15,7 @@
     <div>
       <input type="button" id ="plus" value="+" onclick="add()"/>
       <input type="button" id ="minus" value="-" onclick="subtract()"/>
-      <input type="button" id ="clear" value="clear" onclick="clear()"/>
+      <input type="button" id ="clear" value="clear" onclick="clean()"/>
     </div>
     <script type="text/javascript">
       var transresult;
@@ -42,11 +42,11 @@
       }
       function subtract() {
         setting();
-        document.getElementById("result").value=transeresult-transinput;
+        document.getElementById("result").value=transresult-transinput;
       }
-      function clear() {
-        document.getElementByID("result").value=0;
-        document.getElementByID("input").value=0;
+      function clean() {
+        document.getElementById("result").value=0;
+        document.getElementById("input").value=0;
       }
     </script>
   </body>
