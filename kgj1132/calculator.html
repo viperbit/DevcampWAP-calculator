@@ -2,20 +2,26 @@
 <html lang="ko">
   <head>
     <style type="text/css">
-      input
-      {width:10rem;
-      height:2rem;}
+      input{
+        height:2rem;
+        margin:0.5rem;
+        text-align:center;
+      }
+      .num
+      {width:9.5rem;}
+      .but
+      {width:6rem;}
     </style>
   </head>
   <body>
     <div>
-      <input type="number" id="result" placeholder="결과" readonly=""/>
-      <input type="number" id="input" placeholder="숫자입력"/>
+      <input class = "num" type="number" id="result" placeholder="결과" readonly=""/>
+      <input class = "num" type="number" id="input" placeholder="숫자입력"/>
     </div>
     <div>
-      <input type="button" id ="plus" value="+" onclick="add()"/>
-      <input type="button" id ="minus" value="-" onclick="subtract()"/>
-      <input type="button" id ="clear" value="clear" onclick="clean()"/>
+      <input class = "but" type="button" id ="plus" value="+" onclick="add()"/>
+      <input class = "but" type="button" id ="minus" value="-" onclick="subtract()"/>
+      <input class = "but" type="button" id ="clear" value="clear" onclick="clean()"/>
     </div>
     <script type="text/javascript">
       var transresult;
