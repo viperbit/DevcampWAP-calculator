@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <style type="text/css">
+      input
+      {width:10rem;
+      height:2rem;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="number" id="result" placeholder="결과" readonly="" value="0"/>
+      <input type="number" id="input" placeholder="숫자입력" value="0"/>
+    </div>
+    <div>
+      <input type="button" id ="plus" value="+" onclick="add()"/>
+      <input type="button" id ="minus" value="-" onclick="subtract()"/>
+      <input type="button" id ="clear" value="clear" onclick="clear()"/>
+    </div>
+    <script type="text/javascript">
+      var transresult;
+      var transinput;
+      function setting() {
+        var result=document.getElementById("result").value;
+        var input=document.getElementById("input").value;
+        transresult=transNumber(result);
+        transinput=transNumber(input);
+      }
+      function transNumber(string) {
+        var number;
+          try{
+          number=Number(string);
+          }
+          catch(exception) {
+          alert("숫자를 입력하세요");
+          }
+        return number;
+      }
+      function add() {
+        setting();
+        document.getElementById("result").value=transresult+transinput;
+      }
+      function subtract() {
+        setting();
+        document.getElementById("result").value=transeresult-transinput;
+      }
+      function clear() {
+        document.getElementByID("result").value=0;
+        document.getElementByID("input").value=0;
+      }
+    </script>
+  </body>
+</html>
