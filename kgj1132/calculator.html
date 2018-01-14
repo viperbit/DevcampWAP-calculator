@@ -9,8 +9,8 @@
   </head>
   <body>
     <div>
-      <input type="number" id="result" placeholder="결과" readonly="" value="0"/>
-      <input type="number" id="input" placeholder="숫자입력" value="0"/>
+      <input type="number" id="result" placeholder="결과" readonly=""/>
+      <input type="number" id="input" placeholder="숫자입력"/>
     </div>
     <div>
       <input type="button" id ="plus" value="+" onclick="add()"/>
@@ -45,8 +45,8 @@
         document.getElementById("result").value=transresult-transinput;
       }
       function clean() {
-        document.getElementById("result").value=0;
-        document.getElementById("input").value=0;
+        document.getElementById("result").value="";
+        document.getElementById("input").value="";
       }
     </script>
   </body>
