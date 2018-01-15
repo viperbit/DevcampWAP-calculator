@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
       input{
         height:2rem;
@@ -14,15 +16,20 @@
     </style>
   </head>
   <body>
-    <div>
-      <input class = "num" type="number" id="result" placeholder="결과" readonly=""/>
-      <input class = "num" type="number" id="input" placeholder="숫자입력"/>
-    </div>
-    <div>
-      <input class = "but" type="button" id ="plus" value="+" onclick="add()"/>
-      <input class = "but" type="button" id ="minus" value="-" onclick="subtract()"/>
-      <input class = "but" type="button" id ="clear" value="clear" onclick="clean()"/>
-    </div>
+    <section>
+      <acticle>
+        <div>
+          <input class = "num" type="number" id="result" placeholder="결과" readonly=""/>
+          <input class = "num" type="number" id="input" placeholder="숫자입력"/>
+        </div>
+        <div>
+          <input class = "but" type="button" id ="plus" value="+" onclick="add()"/>
+          <input class = "but" type="button" id ="minus" value="-" onclick="subtract()"/>
+          <input class = "but" type="button" id ="clear" value="clear" onclick="clean()"/>
+        </div>
+      </acticle>
+    </section>
+
     <script type="text/javascript">
       var transresult;
       var transinput;
