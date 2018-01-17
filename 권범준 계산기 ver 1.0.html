@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>덧셈, 뻴셈 계산기</title>
+    <style>
+      * {
+        text-align: center;
+        align-items: center;
+      }
+      .input-box, .output-box, .button-box{
+        padding: 1rem;
+      }
+
+      .ind {
+        padding: 2.7rem;
+      }
+
+      #num1, #num2, #trigger {
+        border: 1px solid gray;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>덧셈, 뻴셈 계산기</h2>
+    </div>
+    <div class="indicator">
+      <span class="ind">숫자1</span><span class="ind">숫자2</span>
+    </div>
+    <div class="input-box">
+      <input id="num1" type="text" value="">
+      <input id="num2" type="text" value="">
+    </div>
+    <div class="button-box">
+      <input name="calculation" id="pluscheck" type="radio" value="+">+</input>
+      <input name="calculation" id="minuscheck" type="radio" value="-">-</input>
+    </div>
+    <input type="button" id="trigger" value="계산" onclick="plus_Minus();">
+    <div class="output-box">
+    </div>
+
+    <script type="text/javascript">
+    //문자열이 숫자인지 판단하는 함수
+      function isNumber(s) {
+        s = s.replace(/^\s*|\s*$/g, ''); // 좌우 공백 제거
+        if (s == '' || isNaN(s)) return false;
+        return true;
+      }
+
+      //덧셈 뺄셈 함수
+      function plus_Minus() {
+        var input1 = document.querySelector("#num1").value;
+        var input2 = document.querySelector("#num2").value;
+        var output;
+        if (isNumber(input1) && isNumber(input2) === true) {
+          input1 = parseFloat(input1);
+          input2 = parseFloat(input2);
+        }
+
+        else {
+          document.querySelector(".output-box").innerHTML = "Please enter the numbers correctly"; //잘못된 문자열 입력시 경고 출력후 함수종료
+          return
+        }
+
+        if (document.querySelector("#pluscheck").checked === true) {
+          output = input1 + input2;
+          output = input1 + " + " + input2 + " = " + output;
+          document.querySelector(".output-box").innerHTML = output;
+          return
+        }
+
+        else if (document.querySelector("#minuscheck").checked === true) {
+          output = input1 - input2;
+          output = input1 + " - " + input2 + " = " + output;
+          document.querySelector(".output-box").innerHTML = output;
+          return
+        }
+
+        else {
+          document.querySelector(".output-box").innerHTML = "Please select plus or minus"; // 체크박스 선택 안했을시 경고 출력
+          return
+        }
+      }
+    </script>
+  </body>
+</html>
