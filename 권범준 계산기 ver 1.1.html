@@ -17,7 +17,7 @@
         padding: 2.7rem;
       }
 
-      #num1, #num2, #trigger {
+      #num1, #num2, #trigger, #cont-trigger {
         border: 1px solid gray;
       }
 
@@ -39,6 +39,7 @@
       <input name="calculation" id="minuscheck" type="radio" value="-">-</input>
     </div>
     <input type="button" id="trigger" value="계산" onclick="plus_Minus();">
+    <input type="button" id="cont-trigger" value="연속계산" onclick="cont_calculation();">
     <div class="output-box">
     </div>
 
@@ -84,6 +85,44 @@
           return
         }
       }
+
+      function cont_calculation() {
+        var input1 = document.querySelector("#num1").value;
+        var input2 = document.querySelector("#num2").value;
+        var output;
+        var result;
+        if (isNumber(input1) && isNumber(input2) === true) {
+          input1 = parseFloat(input1);
+          input2 = parseFloat(input2);
+        }
+
+        else {
+          document.querySelector(".output-box").innerHTML = "Please enter the numbers correctly"; //잘못된 문자열 입력시 경고 출력후 함수종료
+          return
+        }
+
+        if (document.querySelector("#pluscheck").checked === true) {
+          result = input1 + input2;
+          output = input1 + " + " + input2 + " = " + result;
+          document.querySelector(".output-box").innerHTML = output;
+        }
+
+        else if (document.querySelector("#minuscheck").checked === true) {
+          result = input1 - input2;
+          output = input1 + " - " + input2 + " = " + result;
+          document.querySelector(".output-box").innerHTML = output;
+        }
+
+        else {
+          document.querySelector(".output-box").innerHTML = "Please select plus or minus"; // 체크박스 선택 안했을시 경고 출력
+        }
+
+        document.querySelector("#num1").value = result;
+        document.querySelector("#num2").value = "";
+
+        return
+      }
+
     </script>
   </body>
 </html>
