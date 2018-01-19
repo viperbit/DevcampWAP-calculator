@@ -25,17 +25,18 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .container {
-  position:absolute;
-  left:30px;
-  right:30px;
-  top:30px;
-  bottom:30px;
+  position: relative;
+  width: 600px;
+  height: 94%;
+  margin: 20px auto 0;
+  overflow: hidden;
   background:#94a7bf;
   -webkit-border-radius:10px;
   border-radius:10px;
 }
 
 .container h1 {
+  padding-top: 2rem;
   font-size:3rem;
   color:#fff;
   text-align:center;
@@ -43,14 +44,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .ui-display {
   width:90%;
-  height:65%;
+  height:55%;
   margin: 0 auto;
 }
 
 .ui-result {
   position:relative;
   width:100%;
-  height:60%;
+  height:67%;
   border-bottom:1px dashed #666;
   overflow:hidden;
 }
@@ -87,7 +88,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .ui-operator {
-  padding:1rem 3rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 1rem 2rem;
   background: #7b8ea6;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
@@ -107,4 +111,47 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .btn.reset {
   background:#2a2a2a;
+}
+
+@media (max-width:640px) {
+  .container {
+    width: 90%;
+  }
+  .ui-result span {
+    font-size: 6rem;
+  }
+  .btn {
+    width: 4rem;
+  }
+}
+
+@media (max-width:525px) {
+  .container {
+    width: 90%;
+  }
+  .ui-display {
+    height: 47%;
+  }
+  .ui-result {
+    height: 60%;
+  }
+  .ui-result span {
+    font-size: 4rem;
+  }
+  .ui-input {
+    padding:0 1rem;
+    font-size: 3rem;
+  }
+  .ui-input::-webkit-input-placeholder {
+    font-size: 1.5rem;
+  }
+  .btn {
+    width: 3rem;
+  }
+}
+
+@media (max-width:320px) {
+  .ui-display {
+    height: 35%;
+  }
 }
