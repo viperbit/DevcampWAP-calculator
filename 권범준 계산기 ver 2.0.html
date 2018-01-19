@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>덧셈, 뻴셈 계산기</title>
+    <style>
+      * {
+        text-align: center;
+        align-items: center;
+      }
+      .input-box, .output-box {
+        padding: 1rem;
+      }
+
+      #trigger {
+        border: 1px solid gray;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>덧셈, 뻴셈 계산기</h2>
+    </div>
+    <div class="input-box">
+      <textarea id = "equation-input" rows="4" cols="40" placeholder="계산하려는 덧셈 뺄셈식을 입력해주세요 ex)23+45 "></textarea>
+    </div>
+    <input type="button" id="trigger" value="계산" onclick="free_plus_Minus();">
+    <div class="output-box">
+    </div>
+
+
+    <script type="text/javascript">
+
+      function free_plus_Minus(){
+        var input_text = document.querySelector("#equation-input").value;
+        var num_temp = "";
+        var num_elements = [];
+        var sign_pattern = [];
+        var sign_index = -1;
+        var point_index = -1;
+        var result;
+
+        input_text = input_text.replace(/\s+/g, ''); // 공백제거
+
+        for (let i = 0; i < input_text.length; i++) { // 잘못된 문법 요소 제거
+          if (input_text[i] == ".") {
+            if (point_index + 1 == i) {
+              document.querySelector(".output-box").innerHTML = "You have entered wrong equation"
+              return
+            }
+            else {
+              point_index = i;
+            }
+          }
+          else if (isNaN(input_text[i]) === true && input_text[i] != "+" && input_text[i] != "-") {
+            document.querySelector(".output-box").innerHTML = "Please enter numbers, +, - only"
+            return
+          }
+        }
+      console.log(input_text.length);
+        for(let i = 0; i < input_text.length; i++) { // 숫자와 부호 분리 및 정리
+          if (isNaN(input_text[i]) === false || input_text[i] == ".") {
+            if (i == input_text.length - 1) {
+              num_temp += input_text[i];
+              num_elements.push(parseFloat(num_temp));
+            }
+            else {
+              num_temp += input_text[i];
+            }
+          }
+          else if (input_text[i] == "+") {
+            if (sign_index + 1 == i) {
+              document.querySelector(".output-box").innerHTML = "You have entered sign twice in a row"
+              return
+            }
+            else {
+              sign_index = i;
+              sign_pattern.push("+");
+              num_elements.push(parseFloat(num_temp));
+              num_temp = "";
+            }
+          }
+          else if (input_text[i] == "-") {
+            if (sign_index + 1 == i) {
+              document.querySelector(".output-box").innerHTML = "You have entered sign twice in a row"
+              return
+            }
+            else {
+              sign_index = i;
+              sign_pattern.push("-");
+              num_elements.push(parseFloat(num_temp));
+              num_temp = "";
+            }
+          }
+        }
+        result = parseFloat(num_elements[0]);
+      console.log(num_elements);
+      console.log(sign_pattern);
+        for (let i = 0; i < sign_pattern.length; i++) { // 계산 과정
+          if (sign_pattern[i] == "+") {
+            result = result + parseFloat(num_elements[i + 1]);
+          }
+          else if (sign_pattern[i] == "-") {
+            result = result - parseFloat(num_elements[i + 1]);
+          }
+        }
+        document.querySelector(".output-box").innerHTML = result;
+        return
+      }
+
+    </script>
+  </body>
+</html>
