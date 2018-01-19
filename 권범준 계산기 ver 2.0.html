@@ -59,7 +59,6 @@
             return
           }
         }
-      console.log(input_text.length);
         for(let i = 0; i < input_text.length; i++) { // 숫자와 부호 분리 및 정리
           if (isNaN(input_text[i]) === false || input_text[i] == ".") {
             if (i == input_text.length - 1) {
@@ -96,8 +95,6 @@
           }
         }
         result = parseFloat(num_elements[0]);
-      console.log(num_elements);
-      console.log(sign_pattern);
         for (let i = 0; i < sign_pattern.length; i++) { // 계산 과정
           if (sign_pattern[i] == "+") {
             result = result + parseFloat(num_elements[i + 1]);
