@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul {margin: 0; padding: 0}
+html,
+body {height: 100%;}
+body {font-family: "NanumBarunGothic", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 15px; color: #555555;}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {display: block;}
+ol, ul {list-style: none;}
+a {cursor: pointer; color: inherit;}
+a:hover,
+a:focus {text-decoration: none;}
+video {width: 100% !important; height: auto !important;}
+* {-webkit-tap-highlight-color:transparent;}
+caption {display: none;}
+
+input[type="text"] {display: block; width: 100%; border: 1px solid #666; height: 37px; padding: 10px 0; font-size: 17px; text-indent: 20px}
+input[type="text"] + input[type="text"] {margin-top: 10px;}
+button {display: inline-block; min-width: 37px; height: 37px; padding: 0 10px;}
+
+.wrap {width: 960px; margin: 50px auto; text-align: center;}
+.wrap h1{text-align: center; font-size: 36px; margin-bottom:50px;}
+.iptWrap {width: 400px; margin: 0 auto; text-align: center;}
+.oper {width: 400px; margin: 0 auto; text-align: center; margin: 20px auto;}
+.result {border-top: 1px dotted #666; padding-top: 20px;margin-top: 20px;}
+.calc { overflow: hidden; width: 400px; margin: 20px auto;}
+.calc > button { display: block; float: left; width: 195px; margin-right: 5px; height: 50px;}
+.calc > button + button {margin-left: 5px; margin-right: 0;}
