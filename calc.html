@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>사칙연산 간단 계산기</title>
+	<link rel="stylesheet" href="default.css">
+</head>
+<body>
+<div class="wrap">
+	<h1>간단 계산기</h1>
+	<form action="" name="cal">
+		<div class="iptWrap">
+			<input type="text" name="input1">
+		</div>
+
+		<div class="oper">
+			<button type="button" class="btnOper" onclick="oper('+')">+</button>
+			<button type="button" class="btnOper" onclick="oper('-')">-</button>
+			<button type="button" class="btnOper" onclick="oper('*')">X</button>
+			<button type="button" class="btnOper" onclick="oper('/')">/</button>
+		</div>
+		<div class="iptWrap">
+			<input type="text" name="input2">
+		</div>
+
+		<div class="iptWrap result">
+			<input type="text" name="input3">
+		</div>
+
+		<div class="calc">
+			<button type="button" id="btnResult">계산하기</button>
+			<button type="button" id="btnReset">초기화</button>
+		</div>
+	</form>
+</div>
+<script>
+	var op = "";
+	function oper(o){
+		op = o
+	}
+
+	function run(){
+		var result;
+		num1 = document.cal.input1.value;
+		num2 = document.cal.input2.value;
+
+		switch(op){
+			case "+":
+				result = parseInt(num1) + parseInt(num2);
+				document.cal.input3.value = result;
+				break;
+			case "-":
+				result = parseInt(num1) - parseInt(num2);
+				document.cal.input3.value = result;
+				break;
+			case "*":
+				result = parseInt(num1) * parseInt(num2);
+				document.cal.input3.value = result;
+				break;
+			case "/":
+				result = parseInt(num1) / parseInt(num2);
+				document.cal.input3.value = result;
+				break;
+			default :
+				document.cal.input3.value = "";
+				break;
+
+		}
+	}
+
+	var el = document.getElementById("btnResult"),
+		clear = document.getElementById("btnReset");
+
+	el.addEventListener("click", function(){
+	    run();
+	});
+
+	clear.addEventListener("click", function(){
+		document.cal.reset();
+	});
+
+</script>
+</body>
+</html>
