@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      input{
+        height:2rem;
+        margin:0.5rem;
+        text-align:center;
+      }
+      .num
+      {width:9.5rem;}
+      .but
+      {width:6rem;}
+    </style>
+  </head>
+  <body>
+    <section>
+      <acticle>
+        <div>
+          <input class = "num" type="number" id="result" placeholder="결과" readonly=""/>
+          <input class = "num" type="number" id="input" placeholder="숫자입력"/>
+        </div>
+        <div>
+          <input class = "but" type="button" id ="plus" value="+" onclick="add()"/>
+          <input class = "but" type="button" id ="minus" value="-" onclick="subtract()"/>
+          <input class = "but" type="button" id ="clear" value="clear" onclick="clean()"/>
+        </div>
+      </acticle>
+    </section>
+
+    <script type="text/javascript">
+      var transresult;
+      var transinput;
+      function setting() {
+        var result=document.getElementById("result").value;
+        var input=document.getElementById("input").value;
+        transresult=transNumber(result);
+        transinput=transNumber(input);
+      }
+      function transNumber(string) {
+        var number;
+          try{
+          number=Number(string);
+          }
+          catch(exception) {
+          alert("숫자를 입력하세요");
+          }
+        return number;
+      }
+      function add() {
+        setting();
+        document.getElementById("result").value=transresult+transinput;
+      }
+      function subtract() {
+        setting();
+        document.getElementById("result").value=transresult-transinput;
+      }
+      function clean() {
+        document.getElementById("result").value="";
+        document.getElementById("input").value="";
+      }
+    </script>
+  </body>
+</html>
