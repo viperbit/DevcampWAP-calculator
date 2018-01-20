@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+        body {
+            font-size: 1em;
+        }
+
+        .aaa {
+            width: 50%;
+        }
+
+        .input {
+            border: 1px solid #746aff;
+            height: 2rem;
+            width: 2rem;
+            text-align: center;
+            padding-top: 0.5rem;
+        }
+
+        .cal {
+            border: 1px solid #746aff;
+            height: 2rem;
+            width: 4rem;
+            text-align: center;
+            float: left;
+            padding-top: 0.5rem;
+        }
+
+        .result {
+            border: 1px solid #ff353d;
+            height: 2rem;
+            width: 2rem;
+            text-align: center;
+            float: left;
+            margin-left: 10px;
+            padding-top: 0.5rem;
+        }
+
+    </style>
+</head>
+<body>
+<div class="aaa">
+    <div style="margin-top: 10px;">
+        <div class="cal"></div>
+        <div class="result"></div>
+    </div>
+</div>
+<script>
+    (function ($) {
+        window.addEventListener('keypress', function (e) {
+            let val = parseInt(e.key);
+            let cal = $('.cal').text();
+
+            if (isNaN(val) === false) {
+                $('.cal').text(cal + e.key);
+            }
+
+            if (e.key === '+' || e.key === '-') {
+                $('.cal').text(cal + e.key);
+            }
+
+            if (e.keyCode === 13) {
+                try {
+                    let result = eval(cal);
+
+                    $('.result').text(result);
+                    $('.cal').text('');
+                } catch (e) {
+                    alert('서식을 확인하시기 바랍니다.');
+                }
+            }
+        });
+    })(jQuery);
+</script>
+</body>
+</html>
