@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .result-view {
+      border: 1px solid red;
+      width:100px;
+      height:20px;
+    }
+    .oper-input {
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" class="oper-input" onkeyup="checkForNumber(event);" placeholder="덧셈,뺄셈 연산 입력후 엔터 혹은 = 버튼 클릭">
+  <button class="run-btn">=</button>
+  <div class="result-view"></div>
+
+  <script>
+    var numArr = [];
+    var operInput = document.querySelector(".oper-input");
+    var runBtn = document.querySelector(".run-btn");
+    var result = document.querySelector(".result-view");
+    // 계산 버튼 클릭
+    runBtn.addEventListener("click", function() {
+      numTypeSort();
+      operation();
+    })
+    // 엔터키입력
+    operInput.addEventListener("keyup", function() {
+      if(event.keyCode=='13') {
+        numTypeSort();
+        operation();
+
+        
+      }
+    })
+    //숫자, 연산자 외의 문자 입력 방지
+    function checkForNumber(event) {
+     //console.log(event);
+      re = /[^0-9+-.].*/;
+      var temp=operInput.value;
+      if(re.test(temp)){
+        operInput.value=temp.replace(re,"");
+      }    
+    }
+    //인풋박스에 입력된 숫자,연산자 분류
+    function numTypeSort() {
+      var type='+';
+      var str = operInput.value + '=';
+      var temp = '';
+      for(var i=0; i<=str.length; i++) {
+        if(!isNaN(str[i])||str[i]=='.'){
+          temp+=str[i];
+        }else{
+          if(str[i]=='+') {
+            temp && numArr.push(parseFloat(type+temp));
+            type='+';
+          }else if(str[i]=='-') {
+            temp && numArr.push(parseFloat(type+temp));
+            type="-";
+          }else if (str[i]=='=') {  
+            temp && numArr.push(parseFloat(type+temp));       
+          }
+          temp = '';
+        }   
+      }
+    }
+    //계산 실행 후, 초기화
+    function operation() {
+      var addedNum = numArr.reduce(function(previousItem, currentItem) {
+        return previousItem + currentItem;
+      },0)
+      result.innerText = addedNum;
+      numArr = [];
+    }
+     
+  </script>
+</body>
+</html>
